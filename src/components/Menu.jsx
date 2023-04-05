@@ -8,6 +8,7 @@ const Menu = () => (
       <Row key={pasta.id} className="justify-content-center">
         <Col xs={12} md={8} className="text-center my-2">
           <Link to={'/details/' + pasta.id}>
+            {/* es: localhost:3000/details/4 */}
             <img src={pasta.image} alt="pasta pic" />
           </Link>
           <h4>
