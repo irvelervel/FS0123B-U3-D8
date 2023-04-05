@@ -8,6 +8,7 @@ import Home from './components/Home'
 import ReservationForm from './components/ReservationForm'
 import ReservationList from './components/ReservationList'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import NotFound from './components/NotFound'
 
 // BrowserRouter è il componente "principale" di react-router-dom
 // Una buona idea può essere posizionarlo agli estremi di App
@@ -36,8 +37,6 @@ const App = () => {
         {/* <CustomNavbar brandTitle="Stefano" /> */}
 
         <Routes>
-          {/* / */}
-
           {/* sto indicando all'applicazione di renderizzare Home solamente
           quando mi trovo sulla rotta principale, la '/' */}
 
@@ -49,6 +48,9 @@ const App = () => {
 
           {/* /booking */}
           <Route path="/booking" element={<ReservationForm />} />
+
+          {/* monto NotFound su TUTTE le rotte non precedentemente gestite */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </BrowserRouter>
