@@ -11,6 +11,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import NotFound from './components/NotFound'
 import Menu from './components/Menu'
 import PastaDetails from './components/PastaDetails'
+import ClassComponentExample from './components/ClassComponentExample'
 
 // BrowserRouter è il componente "principale" di react-router-dom
 // Una buona idea può essere posizionarlo agli estremi di App
@@ -55,6 +56,12 @@ const App = () => {
           <Route path="/menu" element={<Menu />} />
 
           <Route path="/details/:id" element={<PastaDetails />} />
+          {/* /details/1 */}
+          {/* /details/3 */}
+          {/* /details/ciao */}
+
+          {/* ROTTA DI ESEMPIO PER CLASS COMPONENTS */}
+          <Route path="/class" element={<ClassComponentExample />} />
 
           {/* monto NotFound su TUTTE le rotte non precedentemente gestite */}
           <Route path="*" element={<NotFound />} />
