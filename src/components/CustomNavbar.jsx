@@ -1,7 +1,7 @@
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 // normalmente la navigazione può essere gestita in due modi:
 // 1) <a href="/booking"></a> <-- HTML
@@ -17,9 +17,20 @@ import { Link } from 'react-router-dom'
 // import { Container, Nav, Navbar } from 'react-bootstrap'
 // import meno efficiente :(
 
+// problema: vorremmo attribuire una classe "active" al nav-link correntemente
+// "attivo", l'ultimo cliccato...
+// ...ma per fare questo dovremmo rendere la CustomNavbar "consapevole" di
+// quale sia la rotta attuale!
+// questa consapevolezza la possiamo ottenere grazie al hook "useLocation"
+
 function CustomNavbar(props) {
   // la prop brandTitle è un attributo dell'oggetto props
   // props.brandTitle
+
+  const location = useLocation()
+  console.log('LOCATION OBJECT', location)
+  // location.pathname ci fornirà SEMPRE la rotta attualmente selezionata
+
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container fluid>
@@ -30,13 +41,33 @@ function CustomNavbar(props) {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
-            <Link to="/booking" className="nav-link">
+            <Link
+              className={
+                location.pathname === '/booking'
+                  ? 'nav-link active'
+                  : 'nav-link'
+              }
+              to="/booking"
+            >
               Prenota!
             </Link>
             <Link className="nav-link" to="/contacts">
               Contatti
             </Link>
-            <Link className="nav-link" to="/admin">
+            <Link
+              className={
+                location.pathname === '/menu' ? 'nav-link active' : 'nav-link'
+              }
+              to="/menu"
+            >
+              Menu
+            </Link>
+            <Link
+              className={
+                location.pathname === '/admin' ? 'nav-link active' : 'nav-link'
+              }
+              to="/admin"
+            >
               Admin
             </Link>
           </Nav>

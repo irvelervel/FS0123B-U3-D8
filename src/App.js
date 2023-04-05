@@ -9,6 +9,7 @@ import ReservationForm from './components/ReservationForm'
 import ReservationList from './components/ReservationList'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import NotFound from './components/NotFound'
+import Menu from './components/Menu'
 
 // BrowserRouter è il componente "principale" di react-router-dom
 // Una buona idea può essere posizionarlo agli estremi di App
@@ -48,6 +49,9 @@ const App = () => {
 
           {/* /booking */}
           <Route path="/booking" element={<ReservationForm />} />
+
+          {/* /menu */}
+          <Route path="/menu" element={<Menu />} />
 
           {/* monto NotFound su TUTTE le rotte non precedentemente gestite */}
           <Route path="*" element={<NotFound />} />
